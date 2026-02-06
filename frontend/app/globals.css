@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* ZAP Prime Palette - High Performance & Clarity */
+    --background: 220 33% 98%;
+    /* Soft Slate White */
+    --foreground: 224 71% 4%;
+    /* Near Black */
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+
+    --primary: 221 83% 53%;
+    /* Electric ZAP Blue */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 142 70% 45%;
+    /* Profit Green */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 25% 40%;
+
+    --accent: 0 84% 60%;
+    /* Bearish Red */
+    --accent-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 1rem;
+  }
+
+  [data-theme="dark"] {
+    --background: 224 71% 2%;
+    /* Deep Space Black */
+    --foreground: 213 31% 91%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 217 91% 60%;
+    /* Electric ZAP Blue */
+    --primary-foreground: 222 47% 4%;
+
+    --secondary: 142 70% 50%;
+    /* Profit Green */
+    --secondary-foreground: 222 47% 4%;
+
+    --muted: 217 32% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 0 84% 60%;
+    /* Bearish Red */
+    --accent-foreground: 210 40% 98%;
+
+    --border: 217 32% 15%;
+    --input: 217 32% 15%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border) / 0.1);
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+
+  /* Ultra-Premium Glassmorphism */
+  .glass {
+    background: hsla(224, 71%, 4%, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsla(0, 0%, 100%, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  [data-theme="light"] .glass {
+    background: hsla(0, 0%, 100%, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsla(224, 71%, 4%, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+
+  /* ZAP Trading Background */
+  .bg-premium {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(circle at 2px 2px, hsl(var(--foreground) / 0.03) 1px, transparent 0);
+    background-size: 30px 30px;
+    position: relative;
+  }
+
+  .bg-trading-lines::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.1;
+    background-image: url("data:image/svg+xml,%3Csvg width='1200' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 450 L150 400 L300 430 L450 320 L600 350 L750 220 L900 280 L1050 150 L1200 180' fill='none' stroke='%233b82f6' stroke-width='1.5'/%3E%3Cpath d='M0 500 L150 480 L300 510 L450 440 L600 460 L750 380 L900 410 L1050 320 L1200 340' fill='none' stroke='%2310b981' stroke-width='1'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 1200px 600px;
+    animation: scroll-chart 45s linear infinite;
+  }
+
+  @keyframes scroll-chart {
+    from {
+      background-position: 0 0;
+    }
+
+    to {
+      background-position: -1200px 0;
+    }
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.5);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/* Scrollbar Fixes */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.2);
+}
